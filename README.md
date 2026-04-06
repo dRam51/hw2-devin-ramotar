@@ -14,3 +14,45 @@ The system should produce a clean & structured text document that should the act
 
 ## Why This Task is Valuable Enough to Automate
 This workflow is a good candidate for automation because reduces recapture time that can be spent doing other things. It also prevents the meeting leader from pausing the meeting to take notes and they can stay actively engaged throughout the entire meeting since they know AI will summarize action items at the end.
+
+## How to Run
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/dRam51/hw2-devin-ramotar.git
+cd hw2-devin-ramotar
+```
+
+### 2. Install dependencies
+```bash
+pip install anthropic python-dotenv
+```
+
+### 3. Set up your environment
+```bash
+cp .env.example .env
+# Open .env and add your ANTHROPIC_API_KEY
+```
+
+### 4. Run the program
+```bash
+python app.py
+```
+
+Results will be written to `output.txt`.
+
+### 5. (Optional) Override the system prompt
+In your `.env` file, set:
+```
+SYSTEM_PROMPT=Your custom prompt here
+```
+
+## Project Files
+| File | Description |
+|------|-------------|
+| `app.py` | Main Python script |
+| `eval_set.json` | Test cases (transcripts + expected outputs) |
+| `prompts.md` | System and user prompt documentation |
+| `report.md` | Evaluation findings and analysis |
+| `output.txt` | Generated output from the last run (auto-created) |
+| `.env.example` | Template for environment variables |
