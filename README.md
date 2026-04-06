@@ -1,5 +1,8 @@
 # HW2 - Devin Ramotar
 
+## Workflow Example
+This project uses **summarizing meetings into action items** as the workflow example.
+
 ## Who the User Is
 Primary users are team leaders. Anyone who frequently runs meetings and is responsible for driving momentum and accountability afterward.
 
