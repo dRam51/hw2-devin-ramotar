@@ -5,7 +5,7 @@ Reads test cases from eval_set.json, sends each transcript to the
 Anthropic Claude API, and writes structured results to output.txt.
 
 Usage:
-    python app.py
+    python3 app.py
 
 Requirements:
     pip install anthropic python-dotenv
@@ -19,6 +19,7 @@ import json
 import os
 import sys
 from datetime import datetime
+from pathlib import Path
 
 import anthropic
 from dotenv import load_dotenv
@@ -27,16 +28,17 @@ from dotenv import load_dotenv
 # Configuration
 # ---------------------------------------------------------------------------
 
-load_dotenv()
+# Load .env from the same directory as this script
+load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 if not ANTHROPIC_API_KEY:
     print("ERROR: ANTHROPIC_API_KEY is not set. Add it to your .env file or shell environment.")
     sys.exit(1)
 
-MODEL = "claude-3-5-haiku-20241022"
-EVAL_SET_FILE = "eval_set.json"
-OUTPUT_FILE = "output.txt"
+MODEL = "claude-haiku-4-5-20251001"
+EVAL_SET_FILE = Path(__file__).parent / "eval_set.json"
+OUTPUT_FILE = Path(__file__).parent / "output.txt"
 
 # Configurable system prompt — override via SYSTEM_PROMPT in .env
 DEFAULT_SYSTEM_PROMPT = (
@@ -65,7 +67,7 @@ USER_PROMPT_TEMPLATE = (
 # Core logic
 # ---------------------------------------------------------------------------
 
-def load_eval_set(path: str) -> list[dict]:
+def load_eval_set(path: Path) -> list[dict]:
     """Load test cases from the JSON eval set."""
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
