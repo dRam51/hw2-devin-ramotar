@@ -81,6 +81,9 @@ Transcript:
 ---
 ```
 
+### Reflection (First Revision)
+With this first revision update the output of the tasking was a lot cleaner and easier to read. The LLM was also supposed to act like an expert program manager.
+
 ### Assignment Prompt (First Revision)
 
 > let's update the app
@@ -104,6 +107,9 @@ Transcript:
 >
 > in prompt.md append this prompt and mark the section second revision
 > in output.txt append the results and mark the section second revision
+
+### Reflection (Second Revision)
+With this second revision update it's easier to reproduce this program and all dependencies required to get everything setup and running.
 
 ### Changes Made
 - Added `requirements.txt` listing all dependencies (`anthropic`, `python-dotenv`)
