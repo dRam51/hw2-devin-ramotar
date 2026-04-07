@@ -32,6 +32,23 @@ Please extract all action items from the following meeting transcript:
 
 ---
 
+## Second Revision
+
+### Assignment Prompt (Second Revision)
+
+> lets do one more revision to this app
+> include any necessary libraries (like openai, anthropic, python-dotenv, etc.) so a grader can easily install dependencies.
+> write a short set of instructions for the grader. explain exactly how to set up their API key, install dependencies, and the exact terminal command to run app.py.
+>
+> in prompt.md append this prompt and mark the section second revision
+> in output.txt append the results and mark the section second revision
+
+### Changes Made
+- Added `requirements.txt` listing all dependencies (`anthropic`, `python-dotenv`)
+- Updated `README.md` with detailed grader instructions covering dependency installation, API key setup, and the exact run command
+
+---
+
 ## First Revision
 
 ### System Prompt (First Revision)

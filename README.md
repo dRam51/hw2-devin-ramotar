@@ -15,7 +15,7 @@ The system should produce a clean & structured text document that should the act
 ## Why This Task is Valuable Enough to Automate
 This workflow is a good candidate for automation because reduces recapture time that can be spent doing other things. It also prevents the meeting leader from pausing the meeting to take notes and they can stay actively engaged throughout the entire meeting since they know AI will summarize action items at the end.
 
-## How to Run
+## How to Run (Grader Instructions)
 
 ### 1. Clone the repository
 ```bash
@@ -24,25 +24,36 @@ cd hw2-devin-ramotar
 ```
 
 ### 2. Install dependencies
+All required libraries are listed in `requirements.txt`. Install them with:
 ```bash
-pip install anthropic python-dotenv
+pip install -r requirements.txt
 ```
 
-### 3. Set up your environment
+Dependencies include:
+- `anthropic` — Anthropic Claude API client
+- `python-dotenv` — loads environment variables from `.env`
+
+### 3. Set up your API key
+1. Go to [https://console.anthropic.com](https://console.anthropic.com) and sign in
+2. Navigate to **API Keys** and create a new key
+3. In the project folder, create a `.env` file:
 ```bash
 cp .env.example .env
-# Open .env and add your ANTHROPIC_API_KEY
+```
+4. Open `.env` and replace the placeholder with your key:
+```
+ANTHROPIC_API_KEY=your-api-key-here
 ```
 
 ### 4. Run the program
 ```bash
-python app.py
+python3 app.py
 ```
 
 Results will be written to `output.txt`.
 
 ### 5. (Optional) Override the system prompt
-In your `.env` file, set:
+In your `.env` file, add:
 ```
 SYSTEM_PROMPT=Your custom prompt here
 ```
@@ -51,8 +62,9 @@ SYSTEM_PROMPT=Your custom prompt here
 | File | Description |
 |------|-------------|
 | `app.py` | Main Python script |
+| `requirements.txt` | All Python dependencies |
 | `eval_set.json` | Test cases (transcripts + expected outputs) |
 | `prompts.md` | System and user prompt documentation |
 | `report.md` | Evaluation findings and analysis |
-| `output.txt` | Generated output from the last run (auto-created) |
+| `output.txt` | Generated output from all prompt runs |
 | `.env.example` | Template for environment variables |
