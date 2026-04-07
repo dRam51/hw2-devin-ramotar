@@ -1,6 +1,6 @@
 ======================================================================
 MEETING ACTION ITEM EXTRACTOR — EVALUATION RESULTS
-Run date : 2026-04-06 20:21:06
+Run date : 2026-04-07 11:47:44
 Model    : claude-haiku-4-5-20251001
 ======================================================================
 
@@ -11,13 +11,10 @@ TRANSCRIPT:
 Sarah: Okay, let's wrap up. David, can you have the Q3 marketing budget drafted by next Friday? David: Yes, I'll get that done. Sarah: Great. And I will send out the final vendor contracts by EOD today.
 
 LLM OUTPUT:
-1. Assignee: David
-   Task: Draft the Q3 marketing budget
-   Deadline: next Friday
-
-2. Assignee: Sarah
-   Task: Send out the final vendor contracts
-   Deadline: EOD today
+| # | Assignee | Task | Deadline |
+|---|---|---|---|
+| 1 | David | Draft Q3 marketing budget | Next Friday |
+| 2 | Sarah | Send out final vendor contracts | EOD today |
 
 EXPECTED (grading note):
 Should easily extract two distinct items. Assignee: David, Task: Draft Q3 marketing budget, Deadline: Next Friday. Assignee: Sarah, Task: Send final vendor contracts, Deadline: EOD today.
@@ -30,9 +27,9 @@ TRANSCRIPT:
 Alex: We really need to update the onboarding documentation, it's getting outdated. Jamie: Yeah, I completely agree. I'll take a first pass at it. Alex: Perfect, let's aim to review it sometime early next week before the all-hands.
 
 LLM OUTPUT:
-1. Assignee: Jamie
-   Task: Take a first pass at updating the onboarding documentation
-   Deadline: Early next week before the all-hands
+| # | Assignee | Task | Deadline |
+|---|---|---|---|
+| 1 | Jamie | Take a first pass at updating the onboarding documentation | Early next week |
 
 EXPECTED (grading note):
 Should correctly identify Jamie as the assignee for updating the onboarding docs. A good output handles the vague deadline smoothly (e.g., 'Early next week' or 'Before the all-hands') without making up a specific date.
@@ -45,9 +42,9 @@ TRANSCRIPT:
 Mark: The login API is throwing 500 errors. I'll go ahead and restart the production servers right now to see if that clears it. Oh wait, hold on. Slack just updated. Devops says there's an AWS outage. Nevermind, let's not touch the servers. Let's just put up a maintenance banner instead. Mark: Okay, I'll get the banner up in 10 minutes.
 
 LLM OUTPUT:
-1. Assignee: Mark
-   Task: Put up a maintenance banner
-   Deadline: In 10 minutes
+| # | Assignee | Task | Deadline |
+|---|---|---|---|
+| 1 | Mark | Put up a maintenance banner | 10 minutes |
 
 EXPECTED (grading note):
 Crucial hallucination check. The LLM must NOT create an action item for 'Restart production servers'. It should only extract one action item: Mark putting up the maintenance banner in 10 minutes.

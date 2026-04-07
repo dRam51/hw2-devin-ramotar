@@ -42,22 +42,29 @@ OUTPUT_FILE = Path(__file__).parent / "output.txt"
 
 # Configurable system prompt — override via SYSTEM_PROMPT in .env
 DEFAULT_SYSTEM_PROMPT = (
-    "You are an expert meeting assistant. Your job is to read a raw meeting transcript "
-    "and extract every confirmed action item. For each action item return exactly three fields:\n"
-    "  - Assignee: the person responsible\n"
+    "You are an expert project manager. Your job is to read a raw meeting transcript "
+    "and extract only explicit, confirmed action items. "
+    "Ignore vague promises, small talk, cancelled ideas, or anything walked back.\n\n"
+    "For each confirmed action item, extract exactly three fields:\n"
+    "  - Assignee: the person explicitly responsible\n"
     "  - Task: a concise description of what needs to be done\n"
     "  - Deadline: when it must be completed (use the exact wording from the transcript; "
     "if no deadline is stated write 'Not specified')\n\n"
     "Important rules:\n"
-    "  1. Only include action items that were CONFIRMED. Ignore ideas that were cancelled or walked back.\n"
-    "  2. Do not invent deadlines or assignees that are not in the transcript.\n"
-    "  3. Format your response as a numbered list. Each item must have all three fields on separate lines."
+    "  1. Only include action items that were explicitly CONFIRMED. "
+    "Ignore ideas that were cancelled, walked back, or never agreed upon.\n"
+    "  2. Ignore small talk, status updates, and vague promises with no clear owner or action.\n"
+    "  3. Do not invent deadlines or assignees that are not clearly stated in the transcript.\n"
+    "  4. Format your response as a Markdown table with columns: | # | Assignee | Task | Deadline |\n"
+    "  5. If there are no action items, return a table with a single row stating 'No action items found'."
 )
 
 SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT", DEFAULT_SYSTEM_PROMPT)
 
 USER_PROMPT_TEMPLATE = (
-    "Please extract all action items from the following meeting transcript:\n\n"
+    "Please extract all confirmed action items from the following meeting transcript. "
+    "Return your answer as a Markdown table with columns: | # | Assignee | Task | Deadline |\n\n"
+    "Transcript:\n"
     "---\n"
     "{transcript}\n"
     "---"
