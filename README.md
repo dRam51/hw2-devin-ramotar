@@ -1,4 +1,6 @@
 # HW2 - Devin Ramotar
+## YouTube Video
+https://youtu.be/UTjZB63XPLk
 
 ## Workflow Example
 This project uses **summarizing meetings into action items** as the workflow example.
