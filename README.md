@@ -1,4 +1,4 @@
-# HW2 - Devin Ramotar
+# Meeting Summarizer
 ## YouTube Video
 https://youtu.be/UTjZB63XPLk
 
